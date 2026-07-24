@@ -449,7 +449,11 @@ def run_silu(in_features: Float[Tensor, " ..."]) -> Float[Tensor, " ..."]:
         Float[Tensor,"..."]: of with the same shape as `in_features` with the output of applying
         SiLU to each element.
     """
-    raise NotImplementedError
+    from transformer.SwiGLU import SwiGLU
+    swiglu = SwiGLU(20)
+    return swiglu.silu(in_features)
+
+    # raise NotImplementedError
 
 
 def run_get_batch(
@@ -472,7 +476,9 @@ def run_get_batch(
         is the sampled input sequences, and the second tuple item is the corresponding
         language modeling labels.
     """
-    raise NotImplementedError
+    from transformer.data_loading import data_loading
+    return data_loading(dataset,batch_size,context_length,device)
+    # raise NotImplementedError
 
 
 def run_softmax(in_features: Float[Tensor, " ..."], dim: int) -> Float[Tensor, " ..."]:
@@ -495,6 +501,7 @@ def run_softmax(in_features: Float[Tensor, " ..."], dim: int) -> Float[Tensor, "
 def run_cross_entropy(
     inputs: Float[Tensor, " batch_size vocab_size"], targets: Int[Tensor, " batch_size"]
 ) -> Float[Tensor, ""]:
+    from transformer.cross_entropy import cross_entropy
     """Given a tensor of inputs and targets, compute the average cross-entropy
     loss across examples.
 
@@ -507,7 +514,8 @@ def run_cross_entropy(
     Returns:
         Float[Tensor, ""]: The average cross-entropy loss across examples.
     """
-    raise NotImplementedError
+    return cross_entropy(inputs,targets)
+    # raise NotImplementedError
 
 
 def run_gradient_clipping(parameters: Iterable[torch.nn.Parameter], max_l2_norm: float) -> None:
@@ -519,14 +527,18 @@ def run_gradient_clipping(parameters: Iterable[torch.nn.Parameter], max_l2_norm:
 
     The gradients of the parameters (parameter.grad) should be modified in-place.
     """
-    raise NotImplementedError
+    from transformer.gradient_clipping import gradient_clipping
+    gradient_clipping(parameters,max_l2_norm)
+    # raise NotImplementedError
 
 
 def get_adamw_cls() -> Any:
     """
     Returns a torch.optim.Optimizer that implements AdamW.
     """
-    raise NotImplementedError
+    from transformer.AdamW import AdamW
+    return AdamW
+    # raise NotImplementedError
 
 
 def run_get_lr_cosine_schedule(
@@ -554,7 +566,10 @@ def run_get_lr_cosine_schedule(
     Returns:
         Learning rate at the given iteration under the specified schedule.
     """
-    raise NotImplementedError
+    from transformer.lr_schedule import lr_schedule
+    lr_schedule = lr_schedule(max_learning_rate,min_learning_rate,warmup_iters,cosine_cycle_iters)
+    return lr_schedule.get_lr(it)
+    # raise NotImplementedError
 
 
 def run_save_checkpoint(
@@ -573,7 +588,10 @@ def run_save_checkpoint(
             we've completed.
         out (str | os.PathLike | BinaryIO | IO[bytes]): Path or file-like object to serialize the model, optimizer, and iteration to.
     """
-    raise NotImplementedError
+    from transformer.checkpointing import save_checkpoint
+    save_checkpoint(model,optimizer,iteration,out)
+
+    # raise NotImplementedError
 
 
 def run_load_checkpoint(
@@ -594,7 +612,10 @@ def run_load_checkpoint(
     Returns:
         int: the previously-serialized number of iterations.
     """
-    raise NotImplementedError
+    from transformer.checkpointing import load_checkpoint
+
+    return load_checkpoint(src,model,optimizer)
+    # raise NotImplementedError
 
 
 def get_tokenizer(
@@ -650,7 +671,7 @@ def run_train_bpe(
                 Merges are ordered by order of creation.
     """
 
-    from train_bpe import BpeTokenizer
+    from train_bpe_v2 import BpeTokenizer
     trainer = BpeTokenizer()
     trainer.add_special_tokens(special_tokens)
     return trainer.train(input_path, vocab_size)

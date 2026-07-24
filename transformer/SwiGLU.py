@@ -22,3 +22,6 @@ class SwiGLU(nn.Module):
         hidden = input1 * torch.sigmoid(input1) * input2
         output = self.linear2.forward(hidden)
         return output
+    
+    def silu(self, x):
+        return x * torch.sigmoid(x)

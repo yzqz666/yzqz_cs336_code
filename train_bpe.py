@@ -80,7 +80,7 @@ class BpeTokenizer:
             new_word = []
             i = 0
             while i < len(words):
-                if i < len(words) - 1 and words[i] == token1 and words[i+1] == token2:
+                if i < len(words) - 1 and words[i] == token1 and words[i + 1] == token2:
                     new_word.append(new_token_bytes) # 直接填入合并后的 bytes
                     i += 2
                 else:
