@@ -26,6 +26,25 @@ and the environment will be automatically solved and activated when necessary.
 uv run pytest
 ```
 
+### Train BPE on TinyStories
+
+Run both BPE implementations sequentially with progress bars, timing, and peak
+RAM statistics:
+
+```sh
+uv run train_tinystories_bpe.py
+```
+
+The default target vocabulary size is 10,000. Results are written under
+`artifacts/tinystories_bpe/{train_bpe,train_bpe_v2}/`, with `vocab.json`,
+`merges.txt`, and `metadata.json` for each implementation. The metadata includes
+the RAM baseline, peak, and increase in bytes. For a quick run or a custom
+destination, use for example:
+
+```sh
+uv run train_tinystories_bpe.py --vocab-size 1000 --output-dir artifacts/bpe_1k
+```
+
 Initially, all tests should fail with `NotImplementedError`s.
 To connect your implementation to the tests, complete the
 functions in [./tests/adapters.py](./tests/adapters.py).
@@ -47,4 +66,3 @@ gunzip owt_valid.txt.gz
 
 cd ..
 ```
-

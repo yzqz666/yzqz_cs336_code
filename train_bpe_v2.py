@@ -1,5 +1,9 @@
-import regex as re
+import os
 from collections import Counter
+from contextlib import nullcontext
+
+import regex as re
+from tqdm import tqdm
 
 class BpeTokenizer:
     def __init__(self):
@@ -42,12 +46,23 @@ class BpeTokenizer:
             self.special_token_pattern = re.compile("|".join(escaped_strs))
             
 
-    def count_pre_tokens(self, input_file : str) -> Counter:
+    def count_pre_tokens(self, input_file : str, show_progress: bool = False) -> Counter:
         word_freqs = Counter()
 
         mini_chunk = 4096 * 4096
 
-        with open(input_file, "rb") as f:
+        progress = (
+            tqdm(
+                total=os.path.getsize(input_file),
+                desc="Pre-tokenizing",
+                unit="B",
+                unit_scale=True,
+            )
+            if show_progress
+            else nullcontext()
+        )
+
+        with open(input_file, "rb") as f, progress as progress_bar:
 
             while 1 :
                 chunk = f.read(mini_chunk)
@@ -55,7 +70,11 @@ class BpeTokenizer:
                 if chunk == b"":
                     break
 
-                splits = self.special_token_pattern.split(chunk.decode("utf-8",errors="ignore"))
+                if progress_bar is not None:
+                    progress_bar.update(len(chunk))
+
+                text = chunk.decode("utf-8", errors="ignore")
+                splits = self.special_token_pattern.split(text) if self.special_token_pattern else [text]
 
                 for split in splits:
                     words = self.PAT.findall(split) 
@@ -120,11 +139,16 @@ class BpeTokenizer:
 
         
 
-    def train(self, input_file: str, target_vocab_size: int) -> tuple[dict[int, bytes], list[tuple[bytes, bytes]]]:
+    def train(
+        self,
+        input_file: str,
+        target_vocab_size: int,
+        show_progress: bool = False,
+    ) -> tuple[dict[int, bytes], list[tuple[bytes, bytes]]]:
         """
             训练
         """
-        word_freqs = self.count_pre_tokens(input_file)
+        word_freqs = self.count_pre_tokens(input_file, show_progress=show_progress)
         cnt = 0
 
         for words,freq in word_freqs.items():
@@ -137,32 +161,45 @@ class BpeTokenizer:
                 cnt = cnt + 1
     
 
-        while self.vocab_size < target_vocab_size:
+        progress = (
+            tqdm(
+                total=max(0, target_vocab_size - self.vocab_size),
+                desc="Learning merges (v2)",
+                unit="merge",
+            )
+            if show_progress
+            else nullcontext()
+        )
 
-            if not self.pair_freqs:
-                break
+        with progress as progress_bar:
+            while self.vocab_size < target_vocab_size:
 
-            best_pair = max(self.pair_freqs, key=self.pair_freqs.get)
+                if not self.pair_freqs:
+                    break
 
-            max_freq = self.pair_freqs[best_pair]
-            candidate = []
-            for pair, freq in self.pair_freqs.items():
-                if freq == max_freq:
-                    candidate.append(pair)
-            best_pair = max(candidate)
+                best_pair = max(self.pair_freqs, key=self.pair_freqs.get)
 
-            part1_bytes = best_pair[0]
-            part2_bytes = best_pair[1]
+                max_freq = self.pair_freqs[best_pair]
+                candidate = []
+                for pair, freq in self.pair_freqs.items():
+                    if freq == max_freq:
+                        candidate.append(pair)
+                best_pair = max(candidate)
 
-            new_token_bytes = part1_bytes + part2_bytes
-            
-            self.vocab[self.vocab_size] = new_token_bytes
-            self.merges.append((part1_bytes, part2_bytes))
-            self.vocab_size += 1
+                part1_bytes = best_pair[0]
+                part2_bytes = best_pair[1]
 
-            self.merge_tokens(best_pair[0], best_pair[1], new_token_bytes)
+                new_token_bytes = part1_bytes + part2_bytes
 
-            # self.vocab_inv: dict[bytes, int] = {v: k for k, v in self.vocab.items()} 
+                self.vocab[self.vocab_size] = new_token_bytes
+                self.merges.append((part1_bytes, part2_bytes))
+                self.vocab_size += 1
+
+                self.merge_tokens(best_pair[0], best_pair[1], new_token_bytes)
+                if progress_bar is not None:
+                    progress_bar.update(1)
+
+                # self.vocab_inv: dict[bytes, int] = {v: k for k, v in self.vocab.items()}
 
         return self.vocab, self.merges
     

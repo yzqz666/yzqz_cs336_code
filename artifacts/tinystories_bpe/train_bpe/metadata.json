@@ -1,0 +1,15 @@
+{
+  "implementation": "train_bpe.py",
+  "input": "/home/TheDuskBreeze/cs336/yzqz_cs336_code/data/TinyStoriesV2-GPT4-train.txt",
+  "input_bytes": 2227753162,
+  "target_vocab_size": 10000,
+  "actual_vocab_size": 10000,
+  "merge_count": 9743,
+  "special_tokens": [
+    "<|endoftext|>"
+  ],
+  "elapsed_seconds": 547.5584419119987,
+  "ram_baseline_bytes": 21827584,
+  "ram_peak_bytes": 166121472,
+  "ram_increase_bytes": 144293888
+}
