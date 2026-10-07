@@ -1,4 +1,0 @@
-Corpus: /home/TheDuskBreeze/cs336/yzqz_cs336_code/data/TinyStoriesV2-GPT4-train.txt (2.07 GiB)
-Target vocab size: 10,000
-
-[1/2] Training train_bpe.py

@@ -27,5 +27,4 @@ class Transformer(nn.Module):
             x = block.forward(x)
         x = self.norm.forward(x)
         output = self.output_linear.forward(x)
-        print(output.shape)
         return output

@@ -1,16 +1,10 @@
 import torch
 import numpy as np
 
-def data_loading(array,batch_size,context_length,device):
-    train = []
-    val = []
-    for i in range(batch_size):
-        start = np.random.randint(0,len(array) - context_length)
-        x = np.stack(array[start:start + context_length])
-        y = np.stack(array[start + 1:start + context_length+1])
-        train.append(x)
-        val.append(y)
-    train = torch.tensor(train,device = device)
-    val = torch.tensor(val,device = device)
-
-    return train,val
+def data_loading(array, batch_size, context_length, device):
+    starts = np.random.randint(0, len(array) - context_length, size=batch_size)
+    indices = starts[:, None] + np.arange(context_length)
+    # Encoded datasets use uint16 on disk; embeddings and loss need int64 IDs.
+    train = torch.tensor(array[indices].astype(np.int64), device=device)
+    val = torch.tensor(array[indices + 1].astype(np.int64), device=device)
+    return train, val

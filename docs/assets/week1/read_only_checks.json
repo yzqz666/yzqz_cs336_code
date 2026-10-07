@@ -1,0 +1,252 @@
+{
+  "report_record_date": "2026-10-06",
+  "timezone": "Asia/Shanghai",
+  "evidence_kind": "current_read_only_checks",
+  "scope": "Environment queries, working-tree and source inspection, and static CPU inspection of existing checkpoint files. No training, test execution, dependency synchronization or installation.",
+  "environment": {
+    "checked_at": "2026-10-06T18:47:53+08:00",
+    "timezone": "Asia/Shanghai",
+    "python_executable": "/home/yzqz/lessons/cs336/assignment1-basics/.venv/bin/python3",
+    "python_version": "3.12.3",
+    "project_python_version_file": "3.12",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "kernel_release": "6.18.33.2-microsoft-standard-WSL2",
+    "torch_version": "2.7.1+cu128",
+    "torch_cuda_build": "12.8",
+    "cuda_available": true,
+    "wheel_architectures": [
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120",
+      "compute_120"
+    ],
+    "matplotlib_available": false,
+    "packages": {
+      "numpy": "2.3.2",
+      "pytest": "8.4.1",
+      "triton": "3.3.1",
+      "tiktoken": "0.11.0"
+    },
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 5070 Ti",
+      "compute_capability": [
+        12,
+        0
+      ],
+      "total_memory_bytes": 17094475776
+    },
+    "uv_version": "0.11.7 (x86_64-unknown-linux-gnu)",
+    "nvidia_smi": {
+      "name": "NVIDIA GeForce RTX 5070 Ti",
+      "memory_total_mib": 16303,
+      "driver_version": "610.88"
+    }
+  },
+  "git": {
+    "branch": "main",
+    "head": "e1646605865851aa9dbd995d4ff432d0f6704689",
+    "worktree_status_before_report": [
+      " M README.md",
+      " M pyproject.toml",
+      " M transformer/checkpointing.py",
+      " M transformer/data_loading.py",
+      " M transformer/transformer_lm.py",
+      " M uv.lock",
+      " D \"\\343\\200\\200log.txt\"",
+      "?? .vscode/",
+      "?? encode_dataset.py",
+      "?? tests/test_causality.py",
+      "?? tests/test_runtime.py",
+      "?? tokenizer_experiments.py",
+      "?? verify_runtime.py"
+    ],
+    "source_sha256_before_report": {
+      ".python-version": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+      "README.md": "527dc3a967b82bd92831079f01f5ed85ff2ff271b1f054b138040e2745df8396",
+      "cs336_basics/__init__.py": "6ff76ba439d5447ffbdcfac713bf34db87876a7bfc8dcf24ddcee47cd073f8b0",
+      "cs336_basics/pretokenization_example.py": "72b2d0b2bf36587f8d4aa0b682d5aea86f9bc472c8411c632f2c9b137e70e80b",
+      "encode_dataset.py": "02d966a9e43ea1e3f34e23da084a59db19b00c6ec3054340562776ab74fcca55",
+      "encode_decode.py": "29e51b6a18fbea8ac3083d101adaee24ab578be04bc4c4c684198a52a068fb59",
+      "pyproject.toml": "bbdce7b77d27a17abf8b5448c87ec1a904232b629a568b8f15bb66d7c0e28fde",
+      "sgd_optimizer.py": "53169645de6c08cddaf92e8430a56973d0a7cd27f2ea691102e8acd6b9d09f7a",
+      "test.py": "5ab1f529f8bb485dcc03afcf44be2cc6265185d98cf949929bc3a79563c9f4f2",
+      "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests/adapters.py": "648e6a9fe1294acb3a854d41cc2d948b387ceb97249f7e1550abca511dfff2e7",
+      "tests/common.py": "f9f4e859eea004adcbf9ba80e6f114730c5208e7079354b4710a909a1dbd3db1",
+      "tests/conftest.py": "8785578ccaf06693086faf42230855014554d613af58abbef58b01273b1b9093",
+      "tests/test_causality.py": "5928712cef42d715cffc53256bdcba5c06f8b1a347b040061ac7019692908efb",
+      "tests/test_data.py": "e926adc0da151583092e2a4d35bc482b1ca29023bfcf240ef4d405f190649025",
+      "tests/test_model.py": "d4b65590b746f70eb9782a6475bd0fb77c86c224ab0caf8ec8bb4b8855f15a69",
+      "tests/test_nn_utils.py": "d88b0de95636617bae1000e61538b6df8f498f4404e014fd0d4f74b137d2d49c",
+      "tests/test_optimizer.py": "53498ba85e149e46d6d8a0110bed111cfd4de80c05c995da6d57a69473c8afb8",
+      "tests/test_runtime.py": "9523235fc3f99c8862c4c5c1b06ed42932567b75643f7e359a99f890c1103517",
+      "tests/test_serialization.py": "a9b6f94a782ac1cdf74845a0a9c9004b0d22d46e55c6a6f6a5ba7da0c1826270",
+      "tests/test_tokenizer.py": "a935fd4b3da985d957321bfb1794db3e840473da3b759193b6b5409db34b9551",
+      "tests/test_train_bpe.py": "ba027d30aff1c3de55baf98129f54f8480e6aa4caf36f774ce0fb122d7d0ff58",
+      "tokenizer_experiments.py": "d0a9cf4566ea9b0c55de9219416e713c96333b93a87c9fea37158e7c8d6e987d",
+      "train_bpe.py": "cef20bc881f5c90714d0c8c2cd35b30a28cd382d0dd4575947faaa5714506dda",
+      "train_bpe_v2.py": "951a8a62f696f893a279f941b844b3b01e5f3241895b9815b3a81fc696f4edd4",
+      "train_tinystories_bpe.py": "3c3da0f08093cc41734d9bccef6f4794a479abccf66105a59756486cfaa161ad",
+      "transformer/AdamW.py": "010573e99fb71cdd897a7041324ec5a65526bab8ddaf1797634d378550130728",
+      "transformer/Embedding.py": "681af4c6629b6b9ff07f2ea35fb119ba79df747cf5607ca6893ebbdd7e9ca1d6",
+      "transformer/Linear.py": "5caa941115c095d8c45cee4f6c4f27473fa4efe5069526ceb3feebe357f2b057",
+      "transformer/RMSNorm.py": "127bc2e75cd0d4fa6e98ab7f4d721cec515f7fa97392a4e40e0e13c50d6395fc",
+      "transformer/RoPE.py": "7ba865f3c7f8c671f9bec07c09c976d55d7cd8f96c51b8dbf4c5fd978216eddd",
+      "transformer/SwiGLU.py": "c243caaa37e0e5d09a5de35a66cd5598c83085fe559bff5785f6dde9281dae1b",
+      "transformer/checkpointing.py": "35234baa323c28c0994d441574234c01d3331f0ba5e60882259388fec6a4b1c6",
+      "transformer/cross_entropy.py": "66b495135f6d7551694563dd454d4e4aa26c0c3c3a32f0988652b31204b2c314",
+      "transformer/data_loading.py": "74921040c5c88760af4f402bf8f9d929ade7ad8fd5515d9436ed6c067f32b104",
+      "transformer/gradient_clipping.py": "3645ea7973a3596a7d1844aedceb1edb7e23c6534258cb5e3ac77cda17a7f5c0",
+      "transformer/lr_schedule.py": "52112a9b9f1668af524d83883fba93d4ae0ba0934c593ccbf27870c9c1809481",
+      "transformer/multihead_self_attention.py": "1d0e4b9b9455d8aaacc5784e8aa16153033e84ea1e17a1ebda4aced3979a855b",
+      "transformer/scaled_dot_product_attention.py": "a8f70932d961ddecd351881b28232b2d97561760ad89f92a23ba8e4a1c4278bf",
+      "transformer/softmax.py": "cbf0ca90715ce2a67651a82a42c10c2633d06353ee86ada4e1ac5e76b631dfa9",
+      "transformer/transformer_block.py": "926dbad0edafa19f3f92b7aedeec13db9bd3184a83868c1ad5ce13775d7c7514",
+      "transformer/transformer_lm.py": "adcae191fbe8f287bc767da1de0e255c9bc056396469cde868d1471f7b2d6dea",
+      "uv.lock": "7b25ca13c4c0b283bbe45acd8957b02f2b0e768513eba8d75389edb4e779ca2b",
+      "verify_runtime.py": "8410af89a0f573cbcd4c930db5ce0b66ed6b1be07a490cae122bc6c6b8e95235"
+    }
+  },
+  "checkpoint_file_inspection": {
+    "check_type": "read_only_saved_file_inspection_no_forward_no_optimizer_update",
+    "checked_at": "2026-10-06T18:48:44+08:00",
+    "source_directory": "/tmp/cs336-week1-checkpoint",
+    "checkpoint_keys": [
+      "model_state_dict",
+      "optimizer_state_dict",
+      "iteration"
+    ],
+    "saved_iteration": 3,
+    "optimizer_state_count": 21,
+    "optimizer_state_keys": [
+      "m",
+      "step",
+      "v"
+    ],
+    "optimizer_steps": [
+      3
+    ],
+    "optimizer_tensor_states_finite": true,
+    "optimizer_groups": [
+      {
+        "lr": 0.001,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-8,
+        "weight_decay": 0.01
+      }
+    ],
+    "model_kwargs": {
+      "vocab_size": 128,
+      "context_length": 16,
+      "d_model": 32,
+      "d_ff": 64
+    },
+    "reference_device": "cuda:0",
+    "reference_iteration": 3,
+    "reference_shapes": {
+      "inputs": [
+        2,
+        16
+      ],
+      "targets": [
+        2,
+        16
+      ],
+      "logits": [
+        2,
+        16,
+        128
+      ]
+    },
+    "reference_dtypes": {
+      "inputs": "torch.int64",
+      "targets": "torch.int64",
+      "logits": "torch.float32"
+    },
+    "reference_logit_values_finite": true,
+    "file_sizes_bytes": {
+      "checkpoint.pt": 366886,
+      "reference.pt": 19315
+    },
+    "limits": [
+      "No model reconstruction or logits comparison executed",
+      "No resumed training executed",
+      "No new-process restoration executed",
+      "CPU map_location used for inspection only"
+    ]
+  },
+  "plotting_tools": {
+    "python_plotting_packages": {
+      "matplotlib": false,
+      "plotly": false,
+      "bokeh": false,
+      "seaborn": false
+    },
+    "gnuplot": null,
+    "image_generated": false
+  },
+  "local_evidence_inventory": {
+    "existing_week1_report": false,
+    "training_loss_csv_or_chart_found": false,
+    "full_runtime_stdout_log_found": false,
+    "bpe_log": "log.txt",
+    "bpe_metadata": [
+      "artifacts/tinystories_bpe/train_bpe/metadata.json",
+      "artifacts/tinystories_bpe/train_bpe_v2/metadata.json"
+    ],
+    "dataset_files_present": [
+      {
+        "path": "data/TinyStoriesV2-GPT4-train.txt",
+        "size_bytes": 2227753162
+      },
+      {
+        "path": "data/TinyStoriesV2-GPT4-valid.txt",
+        "size_bytes": 22502601
+      },
+      {
+        "path": "data/tinystories_train.bin",
+        "size_bytes": 1082458694
+      },
+      {
+        "path": "data/tinystories_valid.bin",
+        "size_bytes": 10931766
+      }
+    ],
+    "tokenizer_reference_cache_directory_present": true,
+    "tokenizer_reference_cache_directory": "/tmp/cs336-tiktoken-cache"
+  },
+  "historical_scope_note": "User-provided baseline, single-step, overfit and causality results are retained separately in user_history_results.md and historical_overfit_sparse.csv. Earlier checkpoint success summaries in the conversation are not reclassified as current execution results; local stdout evidence remains to be archived.",
+  "cli_help_check": {
+    "command": "UV_CACHE_DIR=/tmp/cs336-uv-cache uv run --no-sync --offline verify_runtime.py --help",
+    "exit_code": 0,
+    "output": "usage: verify_runtime.py [-h]\n                         [--single-step | --overfit | --restore-checkpoint RESTORE_CHECKPOINT]\n                         [--device {cpu,cuda,auto}] [--steps STEPS]\n                         [--checkpoint-dir CHECKPOINT_DIR]\n\nRuntime checks and CUDA exercises via --single-step or --overfit.\n\noptions:\n  -h, --help            show this help message and exit\n  --single-step         固定 CUDA/FP32 的单步验证\n  --overfit             固定批次过拟合练习\n  --restore-checkpoint RESTORE_CHECKPOINT\n                        在新进程恢复目录中的 checkpoint.pt，并验证续训一步\n  --device {cpu,cuda,auto}\n  --steps STEPS         更新次数，用于 --overfit 或原运行验证模式\n  --checkpoint-dir CHECKPOINT_DIR\n                        原运行验证模式额外保存磁盘 checkpoint，并自动启动新进程恢复\n",
+    "scope": "CLI help only; no forward, training or tests executed."
+  },
+  "documentation_validation": {
+    "relative_markdown_links_resolved": 35,
+    "historical_loss_observations_checked": 12,
+    "historical_axis_completed_updates": [
+      0,
+      19,
+      39,
+      59,
+      79,
+      99,
+      119,
+      139,
+      159,
+      179,
+      199,
+      200
+    ],
+    "source_config_files_unchanged": 44,
+    "git_diff_check_exit_code": 0,
+    "notes": "These results validate documentation and unchanged source files, not model execution or full test results."
+  }
+}

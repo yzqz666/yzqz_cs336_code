@@ -1,0 +1,13 @@
+source,event,update_number,completed_updates,loss
+user_prompt_history,initial_evaluation,0,0,6.478386
+user_prompt_history,before_update,20,19,0.517197
+user_prompt_history,before_update,40,39,0.065005
+user_prompt_history,before_update,60,59,0.030461
+user_prompt_history,before_update,80,79,0.020883
+user_prompt_history,before_update,100,99,0.016074
+user_prompt_history,before_update,120,119,0.012949
+user_prompt_history,before_update,140,139,0.010709
+user_prompt_history,before_update,160,159,0.009028
+user_prompt_history,before_update,180,179,0.007728
+user_prompt_history,before_update,200,199,0.006699
+user_prompt_history,final_evaluation,200,200,0.006654

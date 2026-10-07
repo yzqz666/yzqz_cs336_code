@@ -161,4 +161,12 @@ cython_debug/
 
 .ruff_cache/
 *.zip
-data/*
+
+# Local editor settings and generated datasets
+.vscode/
+/data/
+
+# Runtime outputs; keep tests/fixtures/*.pt and tests/_snapshots/*.npz
+/checkpoints/
+checkpoint.pt
+reference.pt
